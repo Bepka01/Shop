@@ -24,6 +24,16 @@ export default defineConfig([
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
+      'react-refresh/only-export-components': 'off',
+
+      'max-lines': [
+        'error',
+        {
+          max: 150,
+          skipBlankLines: true,
+          skipComments: true,
+        },
+      ],
 
       'unused-imports/no-unused-imports': 'error',
 
