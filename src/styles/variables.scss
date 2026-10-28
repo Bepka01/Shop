@@ -1,10 +1,20 @@
 $font-family: 'Noto Sans', sans-serif;
 
-$primary: #254b3a;
-$canvas: #f8f9f5;
-$text: #202a25;
-$accent: #dce8b0;
-$border: #dfe4db;
+$light-canvas: #f8f9f5;
+$light-surface: #ffffff;
+$light-text: #202a25;
+$light-muted: #647066;
+$light-accent: #254b3a;
+$light-on-accent: #ffffff;
+$light-border: #dfe4db;
+
+$dark-canvas: #121a16;
+$dark-surface: #1c2720;
+$dark-text: #edf2e8;
+$dark-muted: #a9b5ac;
+$dark-accent: #dce8b0;
+$dark-on-accent: #16221b;
+$dark-border: #3d4c41;
 
 $font-size-heading: 42px;
 $font-size-subheading: 24px;
