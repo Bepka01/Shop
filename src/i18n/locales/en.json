@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Fake Store"
+  },
+  "header": {
+    "catalog": "Catalog",
+    "about": "About",
+    "search": "Find something special",
+    "login": "Sign in",
+    "cart": "Bag",
+    "theme": "Toggle theme"
+  },
+  "catalog": {
+    "collection": "COLLECTION / 01",
+    "heroTitle": "Less, but better. More like you.",
+    "heroDescription": "Clothing, jewelry and tech in one place.",
+    "explore": "Explore the collection",
+    "title": "Find your everyday",
+    "allProducts": "All products",
+    "men": "Men",
+    "women": "Women",
+    "jewelry": "Jewelry",
+    "electronics": "Electronics",
+    "sort": "Sort: featured",
+    "empty": "No products found"
+  },
+  "product": {
+    "category": "Category",
+    "quantity": "Quantity",
+    "addToCart": "Add to bag",
+    "descriptionTitle": "Just what you need.",
+    "descriptionSubtitle": "Find all the details in the description.",
+    "rating": "{{rating}} · {{count}} ratings"
+  },
+  "cart": {
+    "title": "Your bag",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} items",
+    "summary": "Summary",
+    "products": "Products",
+    "total": "Total",
+    "remove": "Remove",
+    "save": "Save bag",
+    "continueShopping": "Continue shopping",
+    "empty": "Your bag is empty",
+    "emptyDescription": "Add your first item to the bag.",
+    "checkoutNote": "Demo store. Checkout is not connected."
+  },
+  "auth": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to open your bag.",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign in",
+    "demoTitle": "Fake Store API demo account",
+    "demoDescription": "Use your username and password to sign in.",
+    "backToCatalog": "Back to catalog"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "empty": "Nothing here yet",
+    "currency": "USD"
+  }
+}
