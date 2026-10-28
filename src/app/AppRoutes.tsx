@@ -1,10 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import Cart from '@/pages/Cart'
-import Catalog from '@/pages/Catalog'
-import Login from '@/pages/Login'
-import NotFound from '@/pages/NotFound'
-import ProductCard from '@/pages/ProductCard'
+import { Cart, Catalog, Login, NotFound, ProductCard } from '@/pages'
 
 import { ROUTES } from './routes'
 
