@@ -30,7 +30,9 @@
     "addToCart": "Добавить в сумку",
     "descriptionTitle": "Просто то, что нужно.",
     "descriptionSubtitle": "Все детали — в описании товара.",
-    "rating": "{{rating}} · {{count}} оценок"
+    "rating": "{{rating}} · {{count}} оценок",
+    "title": "Карточка товара",
+    "id": "ID товара"
   },
   "cart": {
     "title": "Ваша сумка",
@@ -64,5 +66,11 @@
     "retry": "Попробовать снова",
     "empty": "Здесь пока пусто",
     "currency": "USD"
+  },
+  "language": {
+    "current": "Текущий язык"
+  },
+  "notFound": {
+    "title": "Страница не найдена"
   }
 }

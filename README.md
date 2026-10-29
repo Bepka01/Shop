@@ -74,3 +74,34 @@ Project-specific VS Code settings are stored in `.vscode/`.
 - ESLint
 - Prettier
 - Husky and lint-staged
+
+## Project Structure
+
+```text
+src/
+├── api/          # API requests and server communication
+├── app/          # Application routes and routing configuration
+├── assets/       # Static assets, such as images and icons
+├── components/   # Reusable UI components
+├── hooks/        # Custom React hooks
+├── i18n/         # Internationalization and translation files
+├── pages/        # Application pages
+├── provider/     # React context providers
+├── stores/       # Global state management with Zustand
+├── styles/       # Global styles, variables, mixins, and reset
+├── types/        # Shared TypeScript types
+└── utils/        # Helper functions and utilities
+```
+
+### Architecture
+
+- **`app/`** contains routing configuration.
+- **`components/`** contains reusable UI components.
+- **`pages/`** contains page-level components.
+- **`api/`** handles communication with external APIs.
+- **`hooks/`** contains custom React hooks.
+- **`stores/`** manages shared application state.
+- **`types/`** contains shared TypeScript definitions.
+- **`utils/`** contains reusable helper functions.
+- **`i18n/`** contains translation resources and internationalization setup.
+- **`styles/`** contains global SCSS styles and design variables.

@@ -30,7 +30,9 @@
     "addToCart": "Add to bag",
     "descriptionTitle": "Just what you need.",
     "descriptionSubtitle": "Find all the details in the description.",
-    "rating": "{{rating}} · {{count}} ratings"
+    "rating": "{{rating}} · {{count}} ratings",
+    "title": "Product details",
+    "id": "Product ID"
   },
   "cart": {
     "title": "Your bag",
@@ -62,5 +64,11 @@
     "retry": "Try again",
     "empty": "Nothing here yet",
     "currency": "USD"
+  },
+  "language": {
+    "current": "Current language"
+  },
+  "notFound": {
+    "title": "Page not found"
   }
 }
