@@ -1,0 +1,11 @@
+@use './variables' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-body;
+  font-weight: 400;
+  color: $light-text;
+  background-color: $light-canvas;
+}

@@ -1,7 +1,11 @@
-function App() {
+import AppRoutes from './app/AppRoutes'
+import LanguageSwitcher from './components/ui/LanguageSwitcher'
+
+const App = () => {
   return (
     <div>
-      <h1>Shop</h1>
+      <LanguageSwitcher />
+      <AppRoutes />
     </div>
   )
 }

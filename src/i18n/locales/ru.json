@@ -1,0 +1,76 @@
+{
+  "app": {
+    "title": "Магазин"
+  },
+  "header": {
+    "catalog": "Каталог",
+    "about": "О магазине",
+    "search": "Найти что-нибудь особенное",
+    "login": "Войти",
+    "cart": "Сумка",
+    "theme": "Переключить тему"
+  },
+  "catalog": {
+    "collection": "КОЛЛЕКЦИЯ / 01",
+    "heroTitle": "Меньше лишнего. Больше вашего.",
+    "heroDescription": "Одежда, украшения и техника в одном месте.",
+    "explore": "Смотреть каталог",
+    "title": "Найдите своё",
+    "allProducts": "Все товары",
+    "men": "Мужчинам",
+    "women": "Женщинам",
+    "jewelry": "Украшения",
+    "electronics": "Электроника",
+    "sort": "Порядок: по умолчанию",
+    "empty": "Товары не найдены"
+  },
+  "product": {
+    "category": "Категория",
+    "quantity": "Количество",
+    "addToCart": "Добавить в сумку",
+    "descriptionTitle": "Просто то, что нужно.",
+    "descriptionSubtitle": "Все детали — в описании товара.",
+    "rating": "{{rating}} · {{count}} оценок",
+    "title": "Карточка товара",
+    "id": "ID товара"
+  },
+  "cart": {
+    "title": "Ваша сумка",
+    "items_one": "{{count}} товар",
+    "items_few": "{{count}} товара",
+    "items_many": "{{count}} товаров",
+    "items_other": "{{count}} товара",
+    "summary": "Итого",
+    "products": "Товары",
+    "total": "Сумма",
+    "remove": "Удалить",
+    "save": "Сохранить корзину",
+    "continueShopping": "Продолжить покупки",
+    "empty": "Корзина пока пуста",
+    "emptyDescription": "Добавьте первый товар в корзину.",
+    "checkoutNote": "Учебный магазин. Оплата не подключена."
+  },
+  "auth": {
+    "title": "С возвращением",
+    "subtitle": "Войдите, чтобы открыть свою корзину.",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "submit": "Войти",
+    "demoTitle": "Демоаккаунт Fake Store API",
+    "demoDescription": "Для входа используйте имя пользователя и пароль.",
+    "backToCatalog": "Вернуться в каталог"
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Что-то пошло не так",
+    "retry": "Попробовать снова",
+    "empty": "Здесь пока пусто",
+    "currency": "USD"
+  },
+  "language": {
+    "current": "Текущий язык"
+  },
+  "notFound": {
+    "title": "Страница не найдена"
+  }
+}

@@ -1,73 +1,107 @@
-# React + TypeScript + Vite
+# Fake Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A shopping application built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js `24.22.1`
+- npm
 
-## React Compiler
+The required Node.js version is specified in `.nvmrc`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### 1. Clone the repository
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone <repository-url>
+cd Shop
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Replace `<repository-url>` with the repository URL.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Install dependencies
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Open the local URL printed in the terminal.
+
+## Available Scripts
+
+| Command                | Description                                     |
+| ---------------------- | ----------------------------------------------- |
+| `npm run dev`          | Start the development server                    |
+| `npm run build`        | Run TypeScript checks and build the application |
+| `npm run preview`      | Preview the production build                    |
+| `npm run lint`         | Check code with ESLint                          |
+| `npm run lint:fix`     | Automatically fix ESLint issues                 |
+| `npm run typecheck`    | Run TypeScript checks                           |
+| `npm run format`       | Format project files with Prettier              |
+| `npm run format:check` | Check formatting with Prettier                  |
+
+## Code Editor Setup
+
+Visual Studio Code is recommended.
+
+Install the following extensions:
+
+- **ESLint** — `dbaeumer.vscode-eslint`
+- **Prettier - Code formatter** — `esbenp.prettier-vscode`
+
+Project-specific VS Code settings are stored in `.vscode/`.
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Chakra UI
+- SCSS
+- i18next
+- Axios
+- React Hook Form
+- Zod
+- Zustand
+- ESLint
+- Prettier
+- Husky and lint-staged
+
+## Project Structure
+
+```text
+src/
+├── api/          # API requests and server communication
+├── app/          # Application routes and routing configuration
+├── assets/       # Static assets, such as images and icons
+├── components/   # Reusable UI components
+├── hooks/        # Custom React hooks
+├── i18n/         # Internationalization and translation files
+├── pages/        # Application pages
+├── provider/     # React context providers
+├── stores/       # Global state management with Zustand
+├── styles/       # Global styles, variables, mixins, and reset
+├── types/        # Shared TypeScript types
+└── utils/        # Helper functions and utilities
+```
+
+### Architecture
+
+- **`app/`** contains routing configuration.
+- **`components/`** contains reusable UI components.
+- **`pages/`** contains page-level components.
+- **`api/`** handles communication with external APIs.
+- **`hooks/`** contains custom React hooks.
+- **`stores/`** manages shared application state.
+- **`types/`** contains shared TypeScript definitions.
+- **`utils/`** contains reusable helper functions.
+- **`i18n/`** contains translation resources and internationalization setup.
+- **`styles/`** contains global SCSS styles and design variables.
