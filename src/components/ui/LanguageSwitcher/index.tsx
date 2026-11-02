@@ -4,8 +4,12 @@ import { useTranslation } from 'react-i18next'
 const LanguageSwitcher: FC = () => {
   const { i18n, t } = useTranslation()
 
-  const changeLanguage = (language: 'en' | 'ru') => {
-    void i18n.changeLanguage(language)
+  const changeLanguage = async (language: 'en' | 'ru') => {
+    try {
+      await i18n.changeLanguage(language)
+    } catch (error) {
+      console.error('Ошибка при переключении языка:', error)
+    }
   }
 
   return (
