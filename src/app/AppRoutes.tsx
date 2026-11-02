@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, Route, Routes } from 'react-router-dom'
 
@@ -5,7 +6,7 @@ import { Cart, Catalog, Login, NotFound, ProductCard } from '@/pages'
 
 import { ROUTES } from './routes'
 
-const AppRoutes = () => {
+const AppRoutes: FC = () => {
   const { t } = useTranslation()
 
   return (

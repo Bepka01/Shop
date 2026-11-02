@@ -1,6 +1,7 @@
+import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher: FC = () => {
   const { i18n, t } = useTranslation()
 
   const changeLanguage = (language: 'en' | 'ru') => {
