@@ -1,7 +1,13 @@
-function App() {
+import type { FC } from 'react'
+
+import AppRoutes from './app/AppRoutes'
+import LanguageSwitcher from './components/ui/LanguageSwitcher'
+
+const App: FC = () => {
   return (
     <div>
-      <h1>Shop</h1>
+      <LanguageSwitcher />
+      <AppRoutes />
     </div>
   )
 }
