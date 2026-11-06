@@ -70,5 +70,10 @@
   },
   "notFound": {
     "title": "Page not found"
+  },
+  "errors": {
+    "server": "Server error",
+    "network": "No response from server. Check your internet connection",
+    "unknown": "An unknown error occurred. Please try again later"
   }
 }

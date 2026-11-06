@@ -1,0 +1,1 @@
+export { generalRequest } from './client'
