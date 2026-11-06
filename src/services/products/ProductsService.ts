@@ -1,17 +1,21 @@
 import axios from 'axios'
 
 import { generalRequest } from '@/api'
-import type { Product, RequestResult } from '@/types'
+import { getApiErrorType } from '@/api/errors'
+import type { IDataResponse, Product } from '@/types'
 
 export const getProducts = async (
   signal?: AbortSignal,
-): Promise<RequestResult<Product[]>> => {
+): Promise<IDataResponse<Product[] | null>> => {
   try {
     const products = await generalRequest<Product[]>({
       url: '/products',
       method: 'GET',
       signal,
     })
+    if (!Array.isArray(products)) {
+      throw new Error('Invalid products response')
+    }
 
     return {
       ok: true,
@@ -24,7 +28,8 @@ export const getProducts = async (
 
     return {
       ok: false,
-      data: [],
+      data: null,
+      error: getApiErrorType(error),
     }
   }
 }

@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { getProducts } from '@/services/products'
-import type { Product } from '@/types'
+import type { ApiErrorType, Product } from '@/types'
 
 const Products: FC = () => {
-  const [error, setError] = useState(false)
+  const [error, setError] = useState<ApiErrorType | null>(null)
   const [loading, setLoading] = useState(true)
   const [retry, setRetry] = useState(0)
   const [products, setProducts] = useState<Product[]>([])
@@ -21,15 +21,17 @@ const Products: FC = () => {
 
         if (controller.signal.aborted) return
 
-        if (result.ok) {
+        if (result.ok && result.data !== null) {
           setProducts(result.data)
-          setError(false)
+          setError(null)
         } else {
-          setError(true)
+          setProducts([])
+          setError(result.error ?? 'unknown')
         }
       } catch {
         if (!controller.signal.aborted) {
-          setError(true)
+          setProducts([])
+          setError('unknown')
         }
       } finally {
         if (!controller.signal.aborted) {
@@ -38,7 +40,7 @@ const Products: FC = () => {
       }
     }
 
-    void loadProducts()
+    loadProducts()
 
     return () => {
       controller.abort()
@@ -51,10 +53,10 @@ const Products: FC = () => {
 
       {error && (
         <div>
-          <p>{t('common.error')}</p>
+          <p>{t(`errors.${error}`)}</p>
           <button
             onClick={() => {
-              setError(false)
+              setError(null)
               setLoading(true)
               setRetry((prev) => prev + 1)
             }}
@@ -62,6 +64,10 @@ const Products: FC = () => {
             {t('common.retry')}
           </button>
         </div>
+      )}
+
+      {!loading && !error && products.length === 0 && (
+        <p>{t('common.empty')}</p>
       )}
 
       <ul>

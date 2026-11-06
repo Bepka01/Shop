@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export type ApiErrorType = 'server' | 'network' | 'unknown' | 'cancelled'
+import type { ApiErrorType } from '@/types'
 
 export const getApiErrorType = (error: unknown): ApiErrorType => {
   if (axios.isCancel(error)) {

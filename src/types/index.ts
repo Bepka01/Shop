@@ -1,2 +1,3 @@
+export type { ApiErrorType } from './ApiError'
 export type { Product } from './Products'
-export type { RequestResult } from './services/common'
+export type { IDataResponse } from './services/common'

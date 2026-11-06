@@ -21,7 +21,10 @@ export const generalRequest = async <T>(
       throw error
     }
 
-    console.error('API request failed:', error)
+    console.error('API request failed:', {
+      code: axios.isAxiosError(error) ? error.code : undefined,
+      status: axios.isAxiosError(error) ? error.response?.status : undefined,
+    })
 
     throw error
   }
