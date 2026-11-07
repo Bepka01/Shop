@@ -13,13 +13,9 @@ const Products: FC = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    const controller = new AbortController()
-
     const loadProducts = async () => {
       try {
-        const result = await getProducts(controller.signal)
-
-        if (controller.signal.aborted) return
+        const result = await getProducts()
 
         if (result.ok && result.data !== null) {
           setProducts(result.data)
@@ -29,22 +25,14 @@ const Products: FC = () => {
           setError(result.error ?? 'unknown')
         }
       } catch {
-        if (!controller.signal.aborted) {
-          setProducts([])
-          setError('unknown')
-        }
+        setProducts([])
+        setError('unknown')
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false)
-        }
+        setLoading(false)
       }
     }
 
     loadProducts()
-
-    return () => {
-      controller.abort()
-    }
   }, [retry])
 
   return (

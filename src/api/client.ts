@@ -14,13 +14,9 @@ export const generalRequest = async <T>(
 ): Promise<T> => {
   try {
     const { data } = await api.request<T>(config)
-
+    console.log(data)
     return data
   } catch (error: unknown) {
-    if (axios.isCancel(error)) {
-      throw error
-    }
-
     console.error('API request failed:', {
       code: axios.isAxiosError(error) ? error.code : undefined,
       status: axios.isAxiosError(error) ? error.response?.status : undefined,
