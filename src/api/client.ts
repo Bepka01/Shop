@@ -1,0 +1,27 @@
+import type { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+export const generalRequest = async <T>(
+  config: AxiosRequestConfig,
+): Promise<T> => {
+  try {
+    const { data } = await api.request<T>(config)
+
+    return data
+  } catch (error: unknown) {
+    console.error('API request failed:', {
+      code: axios.isAxiosError(error) ? error.code : undefined,
+      status: axios.isAxiosError(error) ? error.response?.status : undefined,
+    })
+
+    throw error
+  }
+}
