@@ -14,7 +14,7 @@ export const generalRequest = async <T>(
 ): Promise<T> => {
   try {
     const { data } = await api.request<T>(config)
-    console.log(data)
+
     return data
   } catch (error: unknown) {
     console.error('API request failed:', {
