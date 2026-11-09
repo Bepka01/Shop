@@ -1,0 +1,1 @@
+export { getProductsByCategory } from './productsByCategoryService'
