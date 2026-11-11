@@ -6,14 +6,14 @@ export const login = async (
   credentials: LoginCredentials,
 ): Promise<IDataResponse<AuthResponse | null>> => {
   try {
-    const getLogin = await generalRequest<AuthResponse>({
+    const result = await generalRequest<AuthResponse>({
       method: 'POST',
       url: '/auth/login',
       data: credentials,
     })
     return {
       ok: true,
-      data: getLogin,
+      data: result,
     }
   } catch (error: unknown) {
     return {

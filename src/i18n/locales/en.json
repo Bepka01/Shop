@@ -32,7 +32,9 @@
     "descriptionSubtitle": "Find all the details in the description.",
     "rating": "{{rating}} · {{count}} ratings",
     "title": "Product details",
-    "id": "Product ID"
+    "id": "Product ID",
+    "notFound": "Product not found",
+    "price": "Price"
   },
   "cart": {
     "title": "Your bag",

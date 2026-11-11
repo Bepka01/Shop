@@ -1,37 +1,42 @@
 import type { FC } from 'react'
-import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { getCategories } from '@/services/categories'
-import type { ApiErrorType } from '@/types'
+import { useFetch } from '@/hooks/useFetch'
 
-const Categories: FC = () => {
-  const [categories, setCategory] = useState<string[]>([])
-  const [error, setError] = useState<ApiErrorType | null>(null)
+const isStringArray = (data: unknown): data is string[] => {
+  return Array.isArray(data) && data.every((item) => typeof item === 'string')
+}
 
-  useEffect(() => {
-    const loadCategories = async () => {
-      try {
-        const result = await getCategories()
+export const Categories: FC = () => {
+  const {
+    data: categories,
+    error,
+    loading,
+    refetch,
+  } = useFetch<string[]>('/products/categories', 'GET', isStringArray)
 
-        if (result.ok && result.data !== null) {
-          setCategory(result.data)
-          setError(null)
-        } else {
-          setCategory([])
-          setError(result.error ?? 'unknown')
-        }
-      } catch {
-        setCategory([])
-        setError('unknown')
-      }
-    }
-    loadCategories()
-  }, [])
+  const { t } = useTranslation()
 
-  if (error) {
-    return <p>Произошла ошибка: {error}</p>
+  if (loading) {
+    return <p>{t('common.loading')}</p>
   }
 
+  if (error) {
+    return (
+      <div>
+        <p>{t(`errors.${error}`)}</p>
+        <button onClick={refetch}>{t('common.retry')}</button>
+      </div>
+    )
+  }
+
+  if (!categories) {
+    return null
+  }
+
+  if (categories.length === 0) {
+    return <p>{t('common.empty')}</p>
+  }
   return (
     <div>
       {categories.map((category) => {
@@ -40,5 +45,3 @@ const Categories: FC = () => {
     </div>
   )
 }
-
-export default Categories
