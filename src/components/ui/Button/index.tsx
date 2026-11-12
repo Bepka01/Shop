@@ -4,14 +4,29 @@ import style from './style.module.scss'
 
 interface Props {
   children: ReactNode
+  className?: string
   variant: 'primary' | 'secondary' | 'disabled'
   disabled?: boolean
   onClick?: () => void
 }
 
-const Button: FC<Props> = ({ children, variant, ...props }) => {
+const Button: FC<Props> = ({
+  children,
+  variant,
+  onClick,
+  className,
+  disabled,
+  ...props
+}) => {
+  const isDisabled = disabled || variant === 'disabled'
+
   return (
-    <button className={`${style.button}${style[variant]}`} {...props}>
+    <button
+      onClick={onClick}
+      disabled={isDisabled}
+      className={`${style.button} ${style[variant]} ${className ?? ''}`}
+      {...props}
+    >
       {children}
     </button>
   )
