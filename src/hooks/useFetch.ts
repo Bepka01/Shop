@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import type { ZodType } from 'zod'
 
 import { generalRequest } from '@/api'
 import { getApiErrorType } from '@/api/errors'
@@ -8,8 +9,8 @@ type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 export const useFetch = <T>(
   url: string,
+  schema: ZodType<T>,
   method: HttpMethod = 'GET',
-  validator?: (data: unknown) => data is T,
 ) => {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(true)
@@ -17,6 +18,8 @@ export const useFetch = <T>(
   const [retry, setRetry] = useState(0)
 
   useEffect(() => {
+    let active = true
+
     const loadData = async () => {
       setLoading(true)
       setError(null)
@@ -26,20 +29,29 @@ export const useFetch = <T>(
           method,
         })
 
-        if (validator && !validator(result)) {
-          throw new Error('Invalid response format')
+        const validatedData = schema.parse(result)
+
+        if (active) {
+          setData(validatedData)
         }
-        setData(result as T)
       } catch (error: unknown) {
-        setData(null)
-        setError(getApiErrorType(error))
+        if (active) {
+          setData(null)
+          setError(getApiErrorType(error))
+        }
       } finally {
-        setLoading(false)
+        if (active) {
+          setLoading(false)
+        }
       }
     }
 
     loadData()
-  }, [url, method, retry, validator])
+
+    return () => {
+      active = false
+    }
+  }, [url, method, schema, retry])
 
   const refetch = () => {
     setRetry((prev) => prev + 1)

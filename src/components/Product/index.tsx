@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFetch } from '@/hooks/useFetch'
-import type { Product } from '@/types'
+import { productSchema } from '@/schemas/product.schema'
 
 interface Props {
   id: number
@@ -14,7 +14,7 @@ export const ProductDetails: FC<Props> = ({ id }) => {
     error,
     loading,
     refetch,
-  } = useFetch<Product>(`/products/${id}`)
+  } = useFetch(`/products/${id}`, productSchema)
 
   const { t } = useTranslation()
 

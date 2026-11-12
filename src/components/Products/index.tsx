@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFetch } from '@/hooks/useFetch'
-import type { Product } from '@/types'
+import { productsSchema } from '@/schemas/product.schema'
 
 export const Products: FC = () => {
   const {
@@ -10,7 +10,7 @@ export const Products: FC = () => {
     loading,
     error,
     refetch,
-  } = useFetch<Product[]>('/products')
+  } = useFetch('/products', productsSchema)
 
   const { t } = useTranslation()
 

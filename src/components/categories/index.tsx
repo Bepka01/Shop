@@ -2,10 +2,7 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFetch } from '@/hooks/useFetch'
-
-const isStringArray = (data: unknown): data is string[] => {
-  return Array.isArray(data) && data.every((item) => typeof item === 'string')
-}
+import { categoriesSchema } from '@/schemas/categories.schema'
 
 export const Categories: FC = () => {
   const {
@@ -13,7 +10,7 @@ export const Categories: FC = () => {
     error,
     loading,
     refetch,
-  } = useFetch<string[]>('/products/categories', 'GET', isStringArray)
+  } = useFetch('/products/categories', categoriesSchema)
 
   const { t } = useTranslation()
 

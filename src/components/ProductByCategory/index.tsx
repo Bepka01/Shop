@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFetch } from '@/hooks/useFetch'
-import type { Product } from '@/types'
+import { productsSchema } from '@/schemas/product.schema'
 
 interface Props {
   category: string
@@ -14,7 +14,10 @@ export const ProductByCategory: FC<Props> = ({ category }) => {
     error,
     loading,
     refetch,
-  } = useFetch<Product[]>(`/products/category/${encodeURIComponent(category)}`)
+  } = useFetch(
+    `/products/category/${encodeURIComponent(category)}`,
+    productsSchema,
+  )
 
   const { t } = useTranslation()
 
