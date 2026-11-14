@@ -2,7 +2,8 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFetch } from '@/hooks/useFetch'
-import { categoriesSchema } from '@/schemas/categories.schema'
+
+import { ListRenderer } from '../ListRender.tsx'
 
 export const Categories: FC = () => {
   const {
@@ -10,7 +11,7 @@ export const Categories: FC = () => {
     error,
     loading,
     refetch,
-  } = useFetch('/products/categories', categoriesSchema)
+  } = useFetch<string[]>('/products/categories')
 
   const { t } = useTranslation()
 
@@ -27,18 +28,15 @@ export const Categories: FC = () => {
     )
   }
 
-  if (!categories) {
-    return null
-  }
-
-  if (categories.length === 0) {
-    return <p>{t('common.empty')}</p>
-  }
   return (
-    <div>
-      {categories.map((category) => {
-        return <p key={category}>{category}</p>
-      })}
-    </div>
+    <ListRenderer data={categories} emptyText={t('common.empty')}>
+      {(items) => (
+        <div>
+          {items.map((category) => (
+            <p key={category}>{category}</p>
+          ))}
+        </div>
+      )}
+    </ListRenderer>
   )
 }

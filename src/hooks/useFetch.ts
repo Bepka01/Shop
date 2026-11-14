@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react'
-import type { ZodType } from 'zod'
+import { useCallback, useEffect, useState } from 'react'
 
 import { generalRequest } from '@/api'
 import { getApiErrorType } from '@/api/errors'
 import type { ApiErrorType } from '@/types'
 
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
-
-export const useFetch = <T>(
-  url: string,
-  schema: ZodType<T>,
-  method: HttpMethod = 'GET',
-) => {
+export const useFetch = <T>(url: string) => {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<ApiErrorType | null>(null)
@@ -24,16 +17,12 @@ export const useFetch = <T>(
       setLoading(true)
       setError(null)
       try {
-        const result = await generalRequest<unknown>({
+        const result = await generalRequest<T>({
           url,
-          method,
+          method: 'GET',
         })
 
-        const validatedData = schema.parse(result)
-
-        if (active) {
-          setData(validatedData)
-        }
+        if (active) setData(result)
       } catch (error: unknown) {
         if (active) {
           setData(null)
@@ -51,10 +40,11 @@ export const useFetch = <T>(
     return () => {
       active = false
     }
-  }, [url, method, schema, retry])
+  }, [url, retry])
 
-  const refetch = () => {
+  const refetch = useCallback(() => {
     setRetry((prev) => prev + 1)
-  }
+  }, [])
+
   return { data, loading, error, refetch }
 }

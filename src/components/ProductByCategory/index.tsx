@@ -2,7 +2,9 @@ import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useFetch } from '@/hooks/useFetch'
-import { productsSchema } from '@/schemas/product.schema'
+import type { Product } from '@/types'
+
+import { ListRenderer } from '../ListRender.tsx'
 
 interface Props {
   category: string
@@ -14,10 +16,7 @@ export const ProductByCategory: FC<Props> = ({ category }) => {
     error,
     loading,
     refetch,
-  } = useFetch(
-    `/products/category/${encodeURIComponent(category)}`,
-    productsSchema,
-  )
+  } = useFetch<Product[]>(`/products/category/${encodeURIComponent(category)}`)
 
   const { t } = useTranslation()
 
@@ -34,19 +33,15 @@ export const ProductByCategory: FC<Props> = ({ category }) => {
     )
   }
 
-  if (!products) {
-    return null
-  }
-
-  if (products.length === 0) {
-    return <p>{t('common.empty')}</p>
-  }
-
   return (
-    <ul>
-      {products.map((product) => (
-        <li key={product.id}>{product.title}</li>
-      ))}
-    </ul>
+    <ListRenderer data={products} emptyText={t('common.empty')}>
+      {(items) => (
+        <ul>
+          {items.map((product) => (
+            <li key={product.id}>{product.title}</li>
+          ))}
+        </ul>
+      )}
+    </ListRenderer>
   )
 }

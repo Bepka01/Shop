@@ -1,5 +1,6 @@
 export type { ApiErrorType } from './ApiError'
 export type { AuthResponse, LoginCredentials } from './auth/auth'
 export type { CartType } from './cart/cart'
+export type { Product } from './product'
 export type { IDataResponse } from './services/common'
 export type { User } from './user/user'
