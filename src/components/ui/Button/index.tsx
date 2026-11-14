@@ -7,13 +7,11 @@ interface Props {
   className?: string
   variant: 'primary' | 'secondary' | 'disabled'
   disabled?: boolean
-  onClick?: () => void
 }
 
 const Button: FC<Props> = ({
   children,
   variant,
-  onClick,
   className,
   disabled,
   ...props
@@ -22,7 +20,6 @@ const Button: FC<Props> = ({
 
   return (
     <button
-      onClick={onClick}
       disabled={isDisabled}
       className={`${style.button} ${style[variant]} ${className ?? ''}`}
       {...props}
