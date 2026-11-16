@@ -32,7 +32,9 @@
     "descriptionSubtitle": "Все детали — в описании товара.",
     "rating": "{{rating}} · {{count}} оценок",
     "title": "Карточка товара",
-    "id": "ID товара"
+    "id": "ID товара",
+    "notFound": "Товар не найден",
+    "price": "Цена"
   },
   "cart": {
     "title": "Ваша сумка",
