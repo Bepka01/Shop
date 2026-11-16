@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Categories } from '@/components/categories'
+import { Categories } from '@/components/Categories'
 import { Products } from '@/components/Products'
 
 import styles from './styles.module.scss'

@@ -1,10 +1,13 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { API_URLS } from '@/constants/index.ts'
 import { useFetch } from '@/hooks/useFetch'
 import type { Product } from '@/types'
 
-import { ListRenderer } from '../ListRender.tsx'
+import { ListRenderer } from '../ListRender/index.tsx'
+import { ProductList } from '../ProductList/index.tsx'
+import { RequestError } from '../RequestError/index.tsx'
 
 export const Products: FC = () => {
   const {
@@ -12,32 +15,19 @@ export const Products: FC = () => {
     loading,
     error,
     refetch,
-  } = useFetch<Product[]>('/products')
+  } = useFetch<Product[]>(API_URLS.products)
 
   const { t } = useTranslation()
 
-  if (loading) {
-    return <p>{t('common.loading')}</p>
-  }
-
-  if (error) {
-    return (
-      <div>
-        <p>{t(`errors.${error}`)}</p>
-        <button onClick={refetch}>{t('common.retry')}</button>
-      </div>
-    )
-  }
-
   return (
-    <ListRenderer data={products} emptyText={t('common.empty')}>
-      {(items) => (
-        <ul>
-          {items.map((product) => (
-            <li key={product.id}>{product.title}</li>
-          ))}
-        </ul>
+    <>
+      <RequestError error={error} loading={loading} onRetry={refetch} />
+
+      {!loading && !error && (
+        <ListRenderer data={products} emptyText={t('common.empty')}>
+          {(items) => <ProductList arr={items} />}
+        </ListRenderer>
       )}
-    </ListRenderer>
+    </>
   )
 }

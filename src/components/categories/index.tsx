@@ -1,9 +1,11 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { API_URLS } from '@/constants/index.ts'
 import { useFetch } from '@/hooks/useFetch'
 
-import { ListRenderer } from '../ListRender.tsx'
+import { ListRenderer } from '../ListRender/index.tsx'
+import { RequestError } from '../RequestError/index.tsx'
 
 export const Categories: FC = () => {
   const {
@@ -11,32 +13,24 @@ export const Categories: FC = () => {
     error,
     loading,
     refetch,
-  } = useFetch<string[]>('/products/categories')
+  } = useFetch<string[]>(API_URLS.categories)
 
   const { t } = useTranslation()
 
-  if (loading) {
-    return <p>{t('common.loading')}</p>
-  }
-
-  if (error) {
-    return (
-      <div>
-        <p>{t(`errors.${error}`)}</p>
-        <button onClick={refetch}>{t('common.retry')}</button>
-      </div>
-    )
-  }
-
   return (
-    <ListRenderer data={categories} emptyText={t('common.empty')}>
-      {(items) => (
-        <div>
-          {items.map((category) => (
-            <p key={category}>{category}</p>
-          ))}
-        </div>
+    <>
+      <RequestError error={error} loading={loading} onRetry={refetch} />
+      {!loading && !error && (
+        <ListRenderer data={categories} emptyText={t('common.empty')}>
+          {(items) => (
+            <div>
+              {items.map((category) => (
+                <p key={category}>{category}</p>
+              ))}
+            </div>
+          )}
+        </ListRenderer>
       )}
-    </ListRenderer>
+    </>
   )
 }
