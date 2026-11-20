@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Loader } from '@/components/Loader'
 import Products from '@/components/Products'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
+import { Loader } from '@/components/ui/Loader'
 
 import styles from './styles.module.scss'
 

@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, FC } from 'react'
 
+import { Loader } from '../Loader'
 import style from './style.module.scss'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -26,7 +27,7 @@ export const Button: FC<Props> = ({
       type={type}
       className={`${style.button} ${style[variant]} ${style[align]} ${className ?? ''}`}
     >
-      {children}
+      {isLoading ? <Loader size="sm" /> : children}
     </button>
   )
 }

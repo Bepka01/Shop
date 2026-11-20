@@ -1,14 +1,14 @@
-import type { HTMLAttributes } from 'react'
 import type { FC } from 'react'
 
 import style from './style.module.scss'
 
 type LoaderSize = 'sm' | 'md' | 'lg'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props {
   label?: string
   centered?: boolean
   size?: LoaderSize
+  className?: string
 }
 
 export const Loader: FC<Props> = ({
