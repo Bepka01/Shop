@@ -6,7 +6,7 @@ interface PropsType {
   loading: boolean
 }
 
-export const RequestError = ({ error, onRetry, loading }: PropsType) => {
+export const RequestStatus = ({ error, onRetry, loading }: PropsType) => {
   const { t } = useTranslation()
   if (loading) {
     return <p>{t('common.loading')}</p>

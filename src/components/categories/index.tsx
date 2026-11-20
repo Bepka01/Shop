@@ -1,11 +1,11 @@
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { API_URLS } from '@/constants/index.ts'
+import { getCategories } from '@/api/products.ts'
 import { useFetch } from '@/hooks/useFetch'
 
 import { ListRenderer } from '../ListRender/index.tsx'
-import { RequestError } from '../RequestError/index.tsx'
+import { RequestStatus } from '../RequestStatus/index.tsx'
 
 export const Categories: FC = () => {
   const {
@@ -13,13 +13,13 @@ export const Categories: FC = () => {
     error,
     loading,
     refetch,
-  } = useFetch<string[]>(API_URLS.categories)
+  } = useFetch<string[]>(getCategories)
 
   const { t } = useTranslation()
 
   return (
     <>
-      <RequestError error={error} loading={loading} onRetry={refetch} />
+      <RequestStatus error={error} loading={loading} onRetry={refetch} />
       {!loading && !error && (
         <ListRenderer data={categories} emptyText={t('common.empty')}>
           {(items) => (

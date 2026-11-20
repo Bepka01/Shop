@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { generalRequest } from '@/api'
 import { getApiErrorType } from '@/api/errors'
 import type { ApiErrorType } from '@/types'
 
-export const useFetch = <T>(url: string) => {
+export const useFetch = <T>(requestFn: () => Promise<T>) => {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<ApiErrorType | null>(null)
@@ -17,10 +16,7 @@ export const useFetch = <T>(url: string) => {
       setLoading(true)
       setError(null)
       try {
-        const result = await generalRequest<T>({
-          url,
-          method: 'GET',
-        })
+        const result = await requestFn()
 
         if (active) setData(result)
       } catch (error: unknown) {
@@ -40,7 +36,7 @@ export const useFetch = <T>(url: string) => {
     return () => {
       active = false
     }
-  }, [url, retry])
+  }, [requestFn, retry])
 
   const refetch = useCallback(() => {
     setRetry((prev) => prev + 1)
