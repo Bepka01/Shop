@@ -1,70 +1,33 @@
 import type { FC } from 'react'
-import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getProducts } from '@/services/products'
-import type { ApiErrorType, Product } from '@/types'
+import { getProducts } from '@/api/products.ts'
+import { useFetch } from '@/hooks/useFetch'
+import type { Product } from '@/types'
 
-const Products: FC = () => {
-  const [error, setError] = useState<ApiErrorType | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [retry, setRetry] = useState(0)
-  const [products, setProducts] = useState<Product[]>([])
+import { ListRenderer } from '../ListRender/index.tsx'
+import { ProductList } from '../ProductList/index.tsx'
+import { RequestStatus } from '../RequestStatus/index.tsx'
+
+export const Products: FC = () => {
+  const {
+    data: products,
+    loading,
+    error,
+    refetch,
+  } = useFetch<Product[]>(getProducts)
+
   const { t } = useTranslation()
-
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const result = await getProducts()
-
-        if (result.ok && result.data !== null) {
-          setProducts(result.data)
-          setError(null)
-        } else {
-          setProducts([])
-          setError(result.error ?? 'unknown')
-        }
-      } catch {
-        setProducts([])
-        setError('unknown')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadProducts()
-  }, [retry])
 
   return (
     <>
-      {loading && <p>{t('common.loading')}</p>}
+      <RequestStatus error={error} loading={loading} onRetry={refetch} />
 
-      {error && (
-        <div>
-          <p>{t(`errors.${error}`)}</p>
-          <button
-            onClick={() => {
-              setError(null)
-              setLoading(true)
-              setRetry((prev) => prev + 1)
-            }}
-          >
-            {t('common.retry')}
-          </button>
-        </div>
+      {!loading && !error && (
+        <ListRenderer data={products} emptyText={t('common.empty')}>
+          {(items) => <ProductList items={items} />}
+        </ListRenderer>
       )}
-
-      {!loading && !error && products.length === 0 && (
-        <p>{t('common.empty')}</p>
-      )}
-
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>{product.title}</li>
-        ))}
-      </ul>
     </>
   )
 }
-
-export default Products
