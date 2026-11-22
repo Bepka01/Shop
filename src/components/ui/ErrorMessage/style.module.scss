@@ -1,0 +1,16 @@
+@use '@/styles/variables.scss' as *;
+
+.wrapper {
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-md;
+  border: 1px solid #d9534f;
+  background-color: rgb(217 83 79 / 8%);
+  text-align: center;
+}
+
+.message {
+  margin: 0;
+  font-family: $font-family;
+  font-size: $font-size-body;
+  color: #b52b27;
+}

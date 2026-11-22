@@ -1,0 +1,16 @@
+@use '@/styles/variables.scss' as *;
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 72px;
+
+  @media (max-width: $container-table) {
+    padding: 0 32px;
+  }
+
+  @media (max-width: $container-mobile) {
+    padding: 0 20px;
+  }
+}
