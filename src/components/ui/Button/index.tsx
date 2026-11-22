@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import type { ButtonHTMLAttributes, FC } from 'react'
 
 import { Loader } from '../Loader'
@@ -25,7 +26,7 @@ export const Button: FC<Props> = ({
       {...props}
       disabled={isDisabled}
       type={type}
-      className={`${style.button} ${style[variant]} ${style[align]} ${className ?? ''}`}
+      className={cn(style.button, style[variant], style[align], className)}
     >
       {isLoading ? <Loader size="sm" /> : children}
     </button>

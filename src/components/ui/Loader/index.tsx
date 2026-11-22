@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import type { FC } from 'react'
 
 import style from './style.module.scss'
@@ -22,10 +23,10 @@ export const Loader: FC<Props> = ({
     <div
       role="status"
       aria-live="polite"
-      className={`${style.wrapper} ${centered ? style.centered : ''} ${className ?? ''}`}
+      className={cn(style.wrapper, { [style.centered]: centered }, className)}
       {...props}
     >
-      <span className={`${style.spinner} ${style[size]}`} aria-hidden="true" />
+      <span className={cn(style.spinner, style[size])} aria-hidden="true" />
       {label && <span className={style.label}>{label}</span>}
     </div>
   )

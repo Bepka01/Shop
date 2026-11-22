@@ -1,16 +1,15 @@
+import cn from 'classnames'
+
 import style from './style.module.scss'
 
 interface Props {
   message: string
-  className: string
+  className?: string
 }
 
-export const ErrorMessag = ({ message, className }: Props) => {
+export const ErrorMessage = ({ message, className }: Props) => {
   return (
-    <div
-      role="alert"
-      className={className ? `${style.wrapper} ${className}` : style.wrapper}
-    >
+    <div role="alert" className={cn(style.wrapper, className)}>
       <p className={style.message}>{message}</p>
     </div>
   )

@@ -1,3 +1,5 @@
+import cn from 'classnames'
+
 import style from './style.module.scss'
 
 interface Props {
@@ -7,10 +9,8 @@ interface Props {
 
 export const EmptyState = ({ title, className }: Props) => {
   return (
-    <div
-      className={className ? `${style.wrapper} ${className}` : style.wrapper}
-    >
-      <p className={style.title}>{title}</p>
+    <div className={cn(style.wrapper, className)}>
+      {title && <p className={style.title}>{title}</p>}
     </div>
   )
 }
