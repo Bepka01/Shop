@@ -23,13 +23,13 @@ export const ProductDetails: FC<Props> = ({ id }) => {
   const { t } = useTranslation()
 
   const isReady = !loading && !error
-  const hasProduct = isReady && Boolean(product)
+  const hasProduct = isReady && !!product
   const isNotFound = isReady && !product
 
   return (
     <div>
       <RequestStatus error={error} loading={loading} onRetry={refetch} />
-      {hasProduct && product && (
+      {hasProduct && (
         <div>
           <h1>{product.title}</h1>
           <img src={product.image} alt={product.title} width={200} />
