@@ -18,16 +18,16 @@ export const ProductByCategory: FC<Props> = ({ category }) => {
     [category],
   )
 
-  const { data: products, error, loading, refetch } = useFetch(fetchByCategory)
-
   const { t } = useTranslation()
+
+  const { data: products, error, loading, refetch } = useFetch(fetchByCategory)
 
   return (
     <>
       <RequestStatus error={error} loading={loading} onRetry={refetch} />
       {!loading && !error && (
         <ListRenderer data={products} emptyText={t('common.empty')}>
-          {(items) => <ProductList arr={items} />}
+          {(items) => <ProductList items={items} />}
         </ListRenderer>
       )}
     </>

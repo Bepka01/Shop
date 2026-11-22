@@ -25,7 +25,7 @@ export const Products: FC = () => {
 
       {!loading && !error && (
         <ListRenderer data={products} emptyText={t('common.empty')}>
-          {(items) => <ProductList arr={items} />}
+          {(items) => <ProductList items={items} />}
         </ListRenderer>
       )}
     </>

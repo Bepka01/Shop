@@ -22,23 +22,24 @@ export const ProductDetails: FC<Props> = ({ id }) => {
 
   const { t } = useTranslation()
 
+  const isReady = !loading && !error
+  const hasProduct = isReady && Boolean(product)
+  const isNotFound = isReady && !product
+
   return (
     <div>
       <RequestStatus error={error} loading={loading} onRetry={refetch} />
-      {!loading &&
-        !error &&
-        (product ? (
-          <div>
-            <h1>{product.title}</h1>
-            <img src={product.image} alt={product.title} width={200} />
-            <p>{product.description}</p>
-            <p>
-              {t('product.price')}: {product.price} {t('common.currency')}
-            </p>
-          </div>
-        ) : (
-          <div>{t('product.notFound')}</div>
-        ))}
+      {hasProduct && product && (
+        <div>
+          <h1>{product.title}</h1>
+          <img src={product.image} alt={product.title} width={200} />
+          <p>{product.description}</p>
+          <p>
+            {t('product.price')}: {product.price} {t('common.currency')}
+          </p>
+        </div>
+      )}
+      {isNotFound && <div>{t('product.notFound')}</div>}
     </div>
   )
 }

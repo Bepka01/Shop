@@ -3,14 +3,14 @@ interface Item {
   title: string
 }
 
-interface PropsType<T extends Item> {
-  arr: T[]
+interface ProductListProps {
+  items: Item[]
 }
 
-export const ProductList = <T extends Item>({ arr }: PropsType<T>) => {
+export const ProductList = ({ items }: ProductListProps) => {
   return (
     <ul>
-      {arr.map((item) => (
+      {items.map((item) => (
         <li key={item.id}>{item.title}</li>
       ))}
     </ul>
