@@ -10,6 +10,9 @@
     "cart": "Bag",
     "theme": "Toggle theme"
   },
+  "footer": {
+    "brand": "everyday objects"
+  },
   "catalog": {
     "collection": "COLLECTION / 01",
     "heroTitle": "Less, but better. More like you.",

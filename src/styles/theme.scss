@@ -1,0 +1,29 @@
+@use './variables.scss' as *;
+
+:root {
+  --bg-canvas: #{$light-canvas};
+  --bg-surface: #{$light-surface};
+  --bg-surface-alt: #{$light-surface-alt};
+  --bg-banner: #{$light-green};
+  --text-primary: #{$light-text};
+  --text-muted: #{$light-muted};
+  --accent: #{$light-accent};
+  --accent-hover: #{$light-accent-hover};
+  --on-accent: #{$light-on-accent};
+  --border: #{$light-border};
+  --error: #{$light-error};
+}
+
+[data-theme='dark'] {
+  --bg-canvas: #{$dark-canvas};
+  --bg-surface: #{$dark-surface};
+  --bg-surface-alt: #{$dark-surface-alt};
+  --bg-banner: #{$dark-green};
+  --text-primary: #{$dark-text};
+  --text-muted: #{$dark-muted};
+  --accent: #{$dark-accent};
+  --accent-hover: #{$dark-accent-hover};
+  --on-accent: #{$dark-on-accent};
+  --border: #{$dark-border};
+  --error: #{$dark-error};
+}

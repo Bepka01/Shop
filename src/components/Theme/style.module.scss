@@ -1,0 +1,29 @@
+@use '@/styles/variables.scss' as *;
+
+.theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 40px;
+  padding: 0;
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+  }
+}

@@ -1,0 +1,86 @@
+@use '@/styles/variables.scss' as *;
+
+%flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: $spacing-xl;
+  transition:
+    background-color $transition-normal,
+    border-color $transition-normal;
+}
+
+.inner {
+  @extend %flex-row;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  min-height: 92px;
+  padding: $spacing-lg 0;
+}
+
+.logo {
+  font-family: $font-family;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: color $transition-fast;
+}
+
+.nav {
+  @extend %flex-row;
+  gap: $spacing-2xl;
+}
+
+.action {
+  @extend %flex-row;
+  gap: 20px;
+}
+
+.navLink {
+  font-family: $font-family;
+  font-size: $font-size-body;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color $transition-fast,
+    font-weight $transition-fast;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.active {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.bag {
+  @extend %flex-row;
+  justify-content: center;
+  max-width: 170px;
+  padding: 12px 44px;
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+  font-family: $font-family;
+  font-size: $font-size-body;
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+}
