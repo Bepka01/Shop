@@ -1,0 +1,41 @@
+@use '@/styles/variables' as *;
+
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs;
+  border: 1px solid $light-border;
+  border-radius: $radius-xl; // 16px
+  background-color: $light-surface;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 32px;
+  padding: 0 $spacing-sm;
+  border: none;
+  border-radius: $radius-lg; // 12px
+  background-color: transparent;
+  color: $light-muted;
+  font-family: $font-family;
+  font-size: $font-size-caption; // 12px
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
+
+  &:hover:not(.active) {
+    color: $light-text;
+  }
+}
+
+.active {
+  background-color: $light-accent; // #254b3a
+  color: $light-on-accent; // #ffffff
+}
